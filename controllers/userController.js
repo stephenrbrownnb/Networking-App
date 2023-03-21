@@ -50,12 +50,12 @@ module.exports = {
         return User.updateMany(
           { _id: { $in: user.friends } },
           { $pull: { friends: req.params.id } }
-        );
+        ).then(() => Thought.deleteMany({ username: user.username }));
       })
-      .then(() => res.json({ message: 'User successfully deleted!' }))
+      .then(() => res.json({ message: 'User and associated thoughts successfully deleted!' }))
       .catch((err) => res.status(400).json(err));
   },
-
+  
   addFriend: (req, res) => {
     User.findByIdAndUpdate(
       req.params.userId,
