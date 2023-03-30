@@ -10,24 +10,24 @@ const {
 } = require('../../controllers/thoughts');
 
 // GET all thoughts
-router.get('/thoughts', getAllThoughts);
+router.get('/', getAllThoughts);
 
 // GET a single thought by its _id
-router.get('/thoughts/:id', getThoughtById);
+router.get('/:id', getThoughtById);
 
 // POST to create a new thought
-router.post('/thoughts', createThought);
+router.post('/', createThought);
 
 // PUT to update a thought by its _id
-router.put('/thoughts/:id', updateThought);
+router.put('/:id', updateThought);
 
 // DELETE to remove a thought by its _id
-router.delete('/thoughts/:id', deleteThought);
+router.delete('/:id', deleteThought);
 
 // POST to create a reaction stored in a single thought's reactions array field
-router.post('/thoughts/:thoughtId/reactions', createReaction);
+router.post('/:thoughtId/reactions', createReaction);
 
 // DELETE to pull and remove a reaction by the reaction's reactionId value
-router.delete('/thoughts/:thoughtId/reactions/:reactionId', deleteReaction);
+router.delete('/:thoughtId/reactions/:reactionId', deleteReaction);
 
 module.exports = router;
